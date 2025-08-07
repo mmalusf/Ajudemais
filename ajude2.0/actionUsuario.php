@@ -8,10 +8,23 @@
             //Verifica o método de requisição do servidor
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //Bloco para declaração de variáveis
-                $fotoUsuario = $nomeUsuario = $dataNascimentoUsuario = $cidadeUsuario = $telefoneUsuario = $emailUsuario = $senhaUsuario = $confirmarSenhaUsuario = "";
+                $cpfUsuario =$fotoUsuario = $nomeUsuario = $dataNascimentoUsuario = $cidadeUsuario = $telefoneUsuario = $emailUsuario = $senhaUsuario = $confirmarSenhaUsuario = "";
 
                 //Variável booleana para controle de erros de preenchimento
                 $erroPreenchimento = false;
+
+                if(empty($_POST["cpfUsuario"])){
+                    echo "<div class='alert alert-warning text-center'>O campo <strong>NOME</strong> é obrigatório!</div>";
+                    $erroPreenchimento = true;
+                }
+                else{
+                    //Armazena valor do formulário na variável
+                    $cpfUsuario = filtrar_entrada($_POST["cpfUsuario"]);
+                    
+                    //Utiliza a função preg_match() para verificar se há apenas letras no nome
+                    
+
+                }
 
                 //Validação do campo nomeUsuario
                 //Utiliza a função empty() para verificar se o campo está vazio
@@ -158,7 +171,7 @@
                 if(!$erroPreenchimento && !$erroUpload){
 
                     //Cria uma variável para armazenar a QUERY para realizar a inserção dos dados do Usuário na tabela Usuarios
-                    $inserirUsuario = "INSERT INTO Usuarios (fotoUsuario, nomeUsuario, dataNascimentoUsuario, cidadeUsuario, telefoneUsuario, emailUsuario, senhaUsuario) VALUES ('$fotoUsuario', '$nomeUsuario', '$dataNascimentoUsuario', '$cidadeUsuario', '$telefoneUsuario', '$emailUsuario', '$senhaUsuario')";
+                    $inserirUsuario = "INSERT INTO usuario (cpf, FOTO, nome, email, senha, data_nascimento, endereco, telefone) VALUES ('$cpfUsuario', '$fotoUsuario','$nomeUsuario', '$emailUsuario','$senhaUsuario','$dataNascimentoUsuario', '$cidadeUsuario', '$telefoneUsuario'  )";
 
                     //Inclui o arquivo de conexão com o Banco de Dados
                     include("conexaoBD.php");

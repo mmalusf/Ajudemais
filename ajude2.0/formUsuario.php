@@ -15,6 +15,13 @@
                     </div>
 
                     <div class="form-floating mb-3 mt-3">
+                        <input type="text" class="form-control" id="cpfUsuario" placeholder="cpf" name="cpfUsuario" required>
+                        <label for="cpfUsuario">cpf</label>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-floating mb-3 mt-3">
                         <input type="text" class="form-control" id="nomeUsuario" placeholder="Nome" name="nomeUsuario" required>
                         <label for="nomeUsuario">Nome Completo</label>
                         <div class="valid-feedback"></div>
